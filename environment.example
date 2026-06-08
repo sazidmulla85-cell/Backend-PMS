@@ -1,0 +1,47 @@
+# Backend PMS environment file.
+# Copy this to your hosting provider's environment variables.
+# Do not commit real secrets.
+
+# Runtime
+SERVER_PORT=8080
+JAVA_OPTS=-Xms256m -Xmx768m
+PMS_PRODUCTION_MODE=true
+PMS_SERVER_ERROR_INCLUDE_MESSAGE=never
+
+# Public frontend
+# Example: https://your-pms-frontend.vercel.app
+PMS_FRONTEND_BASE_URL=https://your-frontend-domain.example
+PMS_CORS_ALLOWED_ORIGINS=https://your-frontend-domain.example
+
+# MySQL
+PMS_DB_URL=jdbc:mysql://your-mysql-host.example:3306/hotel_pms?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+PMS_DB_USERNAME=your_mysql_user
+PMS_DB_PASSWORD=replace-with-a-strong-database-password
+PMS_DB_POOL_SIZE=10
+PMS_DB_MIN_IDLE=2
+PMS_DB_CONNECTION_TIMEOUT_MS=30000
+
+# Schema management
+PMS_FLYWAY_ENABLED=true
+PMS_JPA_DDL_AUTO=validate
+
+# Security
+PMS_JWT_SECRET=replace-with-a-random-secret-at-least-32-characters
+PMS_JWT_EXPIRATION_MS=86400000
+PMS_PASSWORD_RESET_EXPIRATION_MINUTES=30
+
+# Seeding
+PMS_SEED_ENABLED=false
+
+# Uploads
+PMS_UPLOAD_DIR=/tmp/hotel-pms/uploads
+PMS_MULTIPART_MAX_FILE_SIZE=10MB
+PMS_MULTIPART_MAX_REQUEST_SIZE=25MB
+
+# Email notifications
+PMS_EMAIL_ENABLED=false
+PMS_EMAIL_SEND_CHECK_IN=true
+PMS_EMAIL_SEND_CHECK_OUT=true
+PMS_GMAIL_FROM=
+PMS_GMAIL_USERNAME=
+PMS_GMAIL_APP_PASSWORD=
