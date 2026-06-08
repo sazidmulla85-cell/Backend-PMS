@@ -22,7 +22,7 @@ COPY --from=build /app/target/Backend-PMS-0.0.1-SNAPSHOT.jar app.jar
 
 USER spring
 
-ENV APP_PROFILE=prod
+ENV PMS_PRODUCTION_MODE=true
 ENV PMS_UPLOAD_DIR=/var/lib/hotel-pms/uploads
 ENV JAVA_OPTS=""
 

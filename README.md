@@ -156,14 +156,13 @@ Requirements:
 - Java 17 or newer
 - a local MySQL server listening on `127.0.0.1:3306`
 
-Create your local environment file from the root template:
+The backend now uses one properties file:
 
-```bash
-cd /Users/sajidshaikh/Documents/PMS-System
-cp .env.development.example .env.development
-```
+- `src/main/resources/application.properties`
 
-Edit `.env.development` when local database credentials or other settings differ.
+The visible backend environment template is:
+
+- `environment.example`
 
 Start or restart the Oracle MySQL Community Server LaunchDaemon on macOS:
 
@@ -199,13 +198,10 @@ EXIT;
 Run the backend from the `Backend-PMS` directory:
 
 ```bash
-set -a
-source ../.env.development
-set +a
 ./mvnw spring-boot:run
 ```
 
-The `dev` profile is active by default. It connects to:
+By default it connects to:
 
 - host: `127.0.0.1`
 - port: `3306`
@@ -236,24 +232,13 @@ The API runs on the configured host and `SERVER_PORT` value, which defaults to p
 
 Flyway now creates and maintains `flyway_schema_history` so database changes are explicit and repeatable across environments.
 
-## Profiles
-
-- `dev`: MySQL for local development
-- `prod`: MySQL for deployment
-
-Set the active profile with:
-
-```bash
-APP_PROFILE=prod
-```
-
 ## Production deployment
 
-Production deployment files now live at the project root:
+Production/deployment configuration is environment-driven. Use:
 
-- `../docker-compose.prod.yml`
-- `../.env.production.example`
-- `../DEPLOYMENT.md`
+- `environment.example` for backend-only cloud hosts
+- `../docker-compose.prod.yml` for full-stack Docker Compose deployment
+- `../DEPLOYMENT.md` for deployment notes
 
 The production backend is environment-driven for:
 
